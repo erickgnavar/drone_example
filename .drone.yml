@@ -8,7 +8,7 @@ build:
     - DB_PASSWORD=postgres
     - DB_PORT=5432
   commands:
-    - pip install -r requirements.txt
+    - pip install -r requirements.txt --cache-dir pip_cache
     - python manage.py test
 compose:
   database:
@@ -17,3 +17,6 @@ compose:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=postgres
+cache:
+  mount:
+    - pip_cache
